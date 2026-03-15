@@ -20,8 +20,8 @@ pipeline {
             steps {
                  bat '''
                 if not exist deploy mkdir deploy
-                copy app.exe deploy\
-                deploy\app.exe
+                copy app.exe deploy
+                deploy\\app.exe
                 '''
             }
         }
