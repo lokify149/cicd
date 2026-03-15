@@ -16,15 +16,19 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Package Artifact') {
             steps {
-                 bat '''
-                if not exist deploy mkdir deploy
-                copy app.exe deploy
-                deploy\\app.exe
-                '''
+                bat 'mkdir artifact'
+                bat 'copy app.exe artifact\\'
             }
         }
+
+        stage('Deploy') {
+    steps {
+        bat 'copy app.exe C:\\Users\\Happy\\OneDrive\\Desktop\\deployment-server\\app\\'
+        bat 'C:\\Users\\Happy\\OneDrive\\Desktop\\deployment-server\\app\\app.exe'
+    }
+}
 
     }
 }
