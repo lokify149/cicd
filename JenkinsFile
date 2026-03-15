@@ -18,9 +18,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'mkdir deploy'
-                bat 'copy app.exe deploy\\'
-                bat 'deploy\\app.exe'
+                 bat '''
+                if not exist deploy mkdir deploy
+                copy app.exe deploy\
+                deploy\app.exe
+                '''
             }
         }
 
