@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build') {
+            steps {
+                bat 'gcc main.c -o app.exe'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'gcc test.c -o test.exe'
+                bat 'test.exe'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'mkdir deploy'
+                bat 'copy app.exe deploy\\'
+                bat 'deploy\\app.exe'
+            }
+        }
+
+    }
+}
